@@ -1,7 +1,16 @@
-export default function Home() {
+import React from 'react';
+import HeadMenu from '@/components/HeadMenu';
+import FilterSection from '@/components/FilterSection';
+
+const HomePage: React.FC = () => {
     return (
-        <main>
-            <div>hello world</div>
-        </main>
+        <div>
+            <HeadMenu />
+            <div style={{ marginTop: '20px' }}>
+                <FilterSection />
+            </div>
+        </div>
     );
-}
+};
+
+export default HomePage;
