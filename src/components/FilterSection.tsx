@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, MenuItem, Slider, Typography } from '@mui/material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import SearchButton from './SearchButton';
 
 const carTypes = ['SUV', 'Sedan', 'Convertible'];
 const motorTypes = ['Electric', 'Hybrid', 'Gasoline'];
@@ -26,6 +27,9 @@ export default function FilterSection() {
     const handleSliderChange = (event, newValue) => {
         setSelectedPrice(newValue);
     };
+    const handleSearch = () => {
+        console.log('Search:', { searchTerm, selectedCarType, selectedMotorType, selectedPrice });
+    };
 
     return (
         <Box
@@ -34,8 +38,9 @@ export default function FilterSection() {
                 flexDirection: 'column',
                 width: '300px',
                 p: 2,
-                background: '#f9f9f9',
-                border: '1px solid #ddd'
+                background: 'white',
+                border: '2px dashed grey',
+                borderRadius: '5px'
             }}
         >
             <TextField
@@ -97,6 +102,7 @@ export default function FilterSection() {
                 />
             </div>
             <Typography>Selected Price: {selectedPrice}€</Typography>
+            <SearchButton onClick={handleSearch} />
         </Box>
     );
 }
