@@ -1,15 +1,27 @@
-// admin/index.js
-import * as React from 'react';
-import { Admin, Resource } from 'react-admin';
+'use client';
+import React from 'react';
+import { Admin, Resource, ListGuesser, EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
+import authProvider from '@/providers/authProvider';
 
-const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
+const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
-const App = () => (
-    <Admin dataProvider={dataProvider}>
-        <Resource name="posts" />
-        <Resource name="comments" />
+const AdminApp = () => (
+    <Admin dataProvider={dataProvider} authProvider={authProvider}>
+        <Resource
+            name="users"
+            list={ListGuesser}
+            edit={EditGuesser}
+            recordRepresentation="name"
+        />
+        <Resource
+            name="posts"
+            list={ListGuesser}
+            edit={EditGuesser}
+            recordRepresentation="title"
+        />
+        <Resource name="comments" list={ListGuesser} edit={EditGuesser} />
     </Admin>
 );
 
-export default App;
+export default AdminApp;
