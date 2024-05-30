@@ -1,105 +1,125 @@
 'use client';
-import React, { useState } from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import React, { useState, useEffect } from 'react';
+import { Box, Typography, Button } from '@mui/material';
+import { styled } from '@mui/system';
 
-const images = [
+const carImages = [
     {
-        label: 'mini van',
-        imgPath: 'https://media.istockphoto.com/id/1404695000/photo/isolated-hippy-van.webp?b=1&s=170667a&w=0&k=20&c=g7vtPptFNX8Vn4LVwMuED2UJpN1svSDajXFGWa0u-iE=',
+        src: 'https://i.redd.it/4k-wallpaper-sports-cars-on-track-v0-9ujw5dx929sa1.jpg?width=3840&format=pjpg&auto=webp&s=6da227a49a303421979ac42f8f9b23d04a44997a',
+        alt: 'Car 1',
+        title: 'Pure Power',
+        description: 'Discover our range of sports cars designed to deliver unrivalled performance. Experience adrenalin on every journey'
     },
     {
-        label: 'Ferrari LaFerrari',
-        imgPath: 'https://fyooyzbm.filerobot.com/v7/d4d3c7b3a4dc224d5783de75d49f2a97-ZyZk7kh7.webp?vh=a98cf5&ci_seal=a2eaeb39d1',
+        src: 'https://medias.fcacanada.ca//specs/dodge/media/images/bento/dodge-charger-reveal-bento-last_6370ac8951e4dfe481da413952dbfb9d-2496x1248.jpg',
+        alt: 'Car 2',
+        title: 'Luxury and elegance',
+        description: 'Drive in style and comfort with our luxury cars. A refined driving experience and sophisticated design for the most discerning drivers.'
     },
     {
-        label: 'Porsche 911',
-        imgPath: 'https://assets-global.website-files.com/652f7b32bc6142bd85a373b0/653038f8a3d7bc4941a913bc__DSC9739.webp',
-    },
-    {
-        label: 'Bentley Continental GT',
-        imgPath: 'https://motortech.fr/storage/actualites/HXt1yNoUV6zAWtxLCKbWBhR4gH9VeXbQ5rEFOCcf.webp',
-    },
+        src: 'https://dfu7z1nf7ktq9.cloudfront.net/blog/20285/65f431858f4ce.webp',
+        title: 'Classic Timelessness',
+        description: 'Immerse yourself in automotive history with our classic cars. Vintage charm and robust mechanics for lovers of tradition'
+    }
 ];
 
-export default function CarouselMenu() {
-    const theme = useTheme();
-    const [activeStep, setActiveStep] = useState(0);
-    const maxSteps = images.length;
+const CarouselContainer = styled(Box)({
+    position: 'relative',
+    width: '100%',
+    height: '400px',
+    overflow: 'hidden',
+    marginLeft: '20px',
+    borderRadius: '10px'
+});
+
+const ImageWrapper = styled(Box)({
+    width: '100%',
+    height: '100%',
+    position: 'relative',
+});
+const CarouselImage = styled('img')({
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '10px',
+    transition: 'transform 1.0s ease-in-out',
+    '&:hover': {
+        transform: 'scale(1.05)'
+    }
+});
+
+const CarouselText = styled(Box)({
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    color: '#fff',
+    fontFamily: 'arial',
+    textShadow: '2px 2px 8px rgba(0, 0, 0, 0.7)',
+    textAlign: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    padding: '10px 20px',
+    borderRadius: '10px',
+});
+
+const NavigationButton = styled(Button)({
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    color: '#fff',
+    '&:hover': {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)'
+    }
+});
+
+export default function Carrousel() {
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrent(prev => (prev === carImages.length - 1 ? 0 : prev + 1));
+        }, 3000);
+
+        return () => clearInterval(timer);
+    }, []);
 
     const handleNext = () => {
-        setActiveStep((prevActiveStep) => (prevActiveStep + 1) % maxSteps);
+        setCurrent(prev => (prev === carImages.length - 1 ? 0 : prev + 1));
     };
 
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => (prevActiveStep - 1 + maxSteps) % maxSteps);
+    const handlePrev = () => {
+        setCurrent(prev => (prev === 0 ? carImages.length - 1 : prev - 1));
     };
 
     return (
-        <Box sx={{
-            flexGrow: 1,
-            marginLeft: '10px',
-            backgroundColor: 'transparent',
-            padding: '5px',
-            borderRadius: '10px',
-            boxShadow: '0 2px 2px rgba(0, 0, 0, 0.5)',
-        }}>
-            <Paper
-                square
-                elevation={0}
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    height: 50,
-                    pl: 2,
-                }}
-            >
-                <Typography>{images[activeStep].label}</Typography>
-            </Paper>
-            <Box sx={{ position: 'relative'}}>
-                <Box
-                    component="img"
+        <CarouselContainer>
+            {carImages.map((car, index) => (
+                <ImageWrapper
+                    key={index}
                     sx={{
-                        height: 255,
-                        display: 'block',
-                        maxWidth: 400,
-                        overflow: 'hidden',
-                        width: '100%',
-                    }}
-                    src={images[activeStep].imgPath}
-                    alt={images[activeStep].label}
-                />
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '60%',
-                        transform: 'translate(-20%, -50%)',
-                        color: 'black',
-                        textAlign: 'center',
+                        display: index === current ? 'block' : 'none'
                     }}
                 >
-                    <Typography variant="h4">Luxury Cars</Typography>
-                    <Typography variant="subtitle1">
-                        Experience the best quality and service in car sales.
-                    </Typography>
-                </Box>
-            </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                    Back
-                </Button>
-                <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                    Next
-                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                </Button>
-            </Box>
-        </Box>
+                    <CarouselImage src={car.src} alt={car.alt} />
+                    <CarouselText>
+                        <Typography variant="h4">{car.title}</Typography>
+                        <Typography variant="body1">{car.description}</Typography>
+                    </CarouselText>
+                </ImageWrapper>
+            ))}
+            <NavigationButton
+                onClick={handlePrev}
+                sx={{ left: '10px' }}
+            >
+                {'<'}
+            </NavigationButton>
+            <NavigationButton
+                onClick={handleNext}
+                sx={{ right: '10px' }}
+            >
+                {'>'}
+            </NavigationButton>
+        </CarouselContainer>
     );
 }
