@@ -3,6 +3,7 @@ import HeadMenu from '@/components/HeadMenu';
 import FilterSection from '@/components/FilterSection';
 import CarouselMenu from '@/components/CarouselMenu';
 
+
 const HomePage: React.FC = () => {
     return (
         <div>

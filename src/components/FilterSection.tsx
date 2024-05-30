@@ -4,6 +4,7 @@ import { Box, TextField, MenuItem, Slider, Typography } from '@mui/material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SearchButton from './SearchButton';
 
+
 const carTypes = ['SUV', 'Sedan', 'Convertible'];
 const motorTypes = ['Electric', 'Hybrid', 'Gasoline'];
 const priceRange = { min: 500, max: 100000 };
@@ -43,9 +44,11 @@ export default function FilterSection() {
                 flexDirection: 'column',
                 width: '300px',
                 p: 2,
+
                 background: 'white',
                 border: '2px dashed grey',
                 borderRadius: '5px'
+
             }}
         >
             <TextField

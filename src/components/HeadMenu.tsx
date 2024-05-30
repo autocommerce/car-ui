@@ -85,7 +85,6 @@ export default function HeadMenu() {
                     <IconButton
                         size="large"
                         edge="start"
-                        
                         aria-label="open drawer"
                         sx={{ mr: 2 , color:'black'}}
                         onClick={toggleMenu}
