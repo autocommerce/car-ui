@@ -28,7 +28,12 @@ export default function FilterSection() {
         setSelectedPrice(newValue);
     };
     const handleSearch = () => {
-        console.log('Search:', { searchTerm, selectedCarType, selectedMotorType, selectedPrice });
+        console.log('Search:', {
+            searchTerm,
+            selectedCarType,
+            selectedMotorType,
+            selectedPrice
+        });
     };
 
     return (

@@ -1,18 +1,50 @@
 import { AuthProvider } from 'react-admin';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    createUserWithEmailAndPassword
+} from 'firebase/auth';
 import { firebaseApp } from '../config/firebase';
 
 const firebaseAuth = getAuth(firebaseApp);
-interface AuthResponse {
-    isAuthenticated: boolean;
+
+interface LoginParams {
+    email: string;
+    password: string;
+}
+
+interface SignupParams {
+    username: string;
+    email: string;
+    password: string;
 }
 
 const authProvider: AuthProvider = {
-    login: async ({ username, password }) => {
+    signup: async ({ username, email, password }: SignupParams) => {
+        try {
+            const userCredential = await createUserWithEmailAndPassword(
+                firebaseAuth,
+                email,
+                password
+            );
+            const user = userCredential.user;
+            // Optionally save the username in user profile or database
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('username', username);
+            return Promise.resolve();
+        } catch (error: any) {
+            console.error("Erreur lors de l'inscription :", error);
+            return Promise.reject(new Error('Signup failed'));
+        }
+    },
+
+    login: async ({ email, password }: LoginParams) => {
+        // Utilisation correcte de 'email'
         try {
             const userCredential = await signInWithEmailAndPassword(
                 firebaseAuth,
-                username,
+                email,
                 password
             );
             const user = userCredential.user;
@@ -27,6 +59,7 @@ const authProvider: AuthProvider = {
     logout: async () => {
         try {
             localStorage.removeItem('user');
+            localStorage.removeItem('username');
             await signOut(firebaseAuth);
             return Promise.resolve();
         } catch (error: any) {
@@ -40,10 +73,11 @@ const authProvider: AuthProvider = {
         return user ? Promise.resolve() : Promise.reject();
     },
 
-    checkError: (error) => {
+    checkError: (error: { status: number }) => {
         const status = error.status;
         if (status === 401 || status === 403) {
             localStorage.removeItem('user');
+            localStorage.removeItem('username');
             return Promise.reject();
         }
         return Promise.resolve();
