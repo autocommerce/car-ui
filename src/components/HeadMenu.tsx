@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import { Button } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,6 +12,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import Link from 'next/link';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -83,9 +85,8 @@ export default function HeadMenu() {
                     <IconButton
                         size="large"
                         edge="start"
-                        color="black"
                         aria-label="open drawer"
-                        sx={{ mr: 2 }}
+                        sx={{ mr: 2 , color:'black'}}
                         onClick={toggleMenu}
                     >
                         <MenuIcon />
@@ -103,8 +104,8 @@ export default function HeadMenu() {
                             display: { xs: 'none', sm: 'block' },
                             fontFamily: '',
                             color: '#333',
-                            marginLeft: isMenuOpen ? '300px' : '0',
-                            transition: 'margin-left 0.3s',
+                            marginLeft: isMenuOpen ? '10%' : '0',
+                            transition: 'margin-left 0.5s',
                             '& span': {
                                 marginLeft: '20px',
                                 marginRight: '20px',
@@ -135,6 +136,12 @@ export default function HeadMenu() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
+                    <Button 
+                        variant="contained"
+                        sx={{ ml: 2}}
+                    >
+                        <Link href="/dashboard" style={{textDecoration: 'none', color:'white'}}>Login</Link>
+                    </Button>
                 </Toolbar>
             </AppBar>
         </Box>

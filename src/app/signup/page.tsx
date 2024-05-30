@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { useLogin, useNotify, Notification } from 'react-admin';
+import { useNotify } from 'react-admin';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,23 +9,27 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import authProvider from '@/providers/authProvider';
 
-const CustomLoginPage: React.FC = () => {
+const CustomSignUpPage: React.FC = () => {
+    const [username, setUsername] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const login = useLogin();
+    const router = useRouter();
     const notify = useNotify();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            await login({ email, password });
-        } catch (error: any) {
-            const errorMessage =
-                error.message ||
-                'Erreur lors de la connexion : identifiants invalides';
-            notify(errorMessage, { type: 'warning' });
+            await authProvider.signup({ username, email, password });
+            notify('Inscription réussie !', { type: 'success' });
+            router.push('/dashboard');
+        } catch (error) {
+            const err = error as Error;
+            notify(`Erreur lors de l'inscription : ${err.message}`, {
+                type: 'warning'
+            });
         }
     };
 
@@ -44,7 +48,7 @@ const CustomLoginPage: React.FC = () => {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Login
+                    Sign Up
                 </Typography>
                 <Box
                     component="form"
@@ -57,11 +61,23 @@ const CustomLoginPage: React.FC = () => {
                         margin="normal"
                         required
                         fullWidth
+                        id="username"
+                        label="Username"
+                        name="username"
+                        autoComplete="username"
+                        autoFocus
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
                         id="email"
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -84,19 +100,12 @@ const CustomLoginPage: React.FC = () => {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                     >
-                        Login
+                        Sign Up
                     </Button>
                 </Box>
-                <Button 
-                    variant="contained"
-                    sx={{ width: "50%" }}
-                >
-                    <Link href="/signup" style={{textDecoration: 'none' , color: 'white'}}>Sign Up</Link>
-                </Button>
             </Box>
-            <Notification />
         </Container>
     );
 };
 
-export default CustomLoginPage;
+export default CustomSignUpPage;
