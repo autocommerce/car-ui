@@ -4,7 +4,6 @@ import { Box, TextField, MenuItem, Slider, Typography } from '@mui/material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SearchButton from './SearchButton';
 
-
 const carTypes = ['SUV', 'Sedan', 'Convertible'];
 const motorTypes = ['Electric', 'Hybrid', 'Gasoline'];
 const priceRange = { min: 500, max: 100000 };
@@ -25,8 +24,8 @@ export default function FilterSection() {
     const [selectedMotorType, setSelectedMotorType] = useState('');
     const [selectedPrice, setSelectedPrice] = useState(priceRange.min);
 
-    const handleSliderChange = (event, newValue) => {
-        setSelectedPrice(newValue);
+    const handleSliderChange = (event: Event, newValue: number | number[]) => {
+        setSelectedPrice(newValue as number);
     };
     const handleSearch = () => {
         console.log('Search:', {
@@ -48,7 +47,6 @@ export default function FilterSection() {
                 background: 'white',
                 border: '2px dashed grey',
                 borderRadius: '5px'
-
             }}
         >
             <TextField
@@ -98,7 +96,7 @@ export default function FilterSection() {
                     min={priceRange.min}
                     max={priceRange.max}
                     valueLabelDisplay="auto"
-                    ThumbComponent={null}
+                    ThumbComponent={() => null}
                     sx={{ mb: 2 }}
                 />
                 <LocalShippingIcon

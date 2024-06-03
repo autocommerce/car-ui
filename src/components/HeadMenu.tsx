@@ -86,7 +86,7 @@ export default function HeadMenu() {
                         size="large"
                         edge="start"
                         aria-label="open drawer"
-                        sx={{ mr: 2 , color:'black'}}
+                        sx={{ mr: 2, color: 'black' }}
                         onClick={toggleMenu}
                     >
                         <MenuIcon />
@@ -136,11 +136,13 @@ export default function HeadMenu() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <Button 
-                        variant="contained"
-                        sx={{ ml: 2}}
-                    >
-                        <Link href="/dashboard" style={{textDecoration: 'none', color:'white'}}>Login</Link>
+                    <Button variant="contained" sx={{ ml: 2 }}>
+                        <Link
+                            href="/dashboard"
+                            style={{ textDecoration: 'none', color: 'white' }}
+                        >
+                            Login
+                        </Link>
                     </Button>
                 </Toolbar>
             </AppBar>
