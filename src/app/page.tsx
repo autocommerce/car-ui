@@ -4,6 +4,7 @@ import HeadMenu from '@/components/HeadMenu';
 import FilterSection from '@/components/FilterSection';
 import CarouselMenu from '@/components/CarouselMenu';
 import StartupPage from '../components/StartupPage';
+import AppointmentContactForm from '@/components/AppointmentContactForm';
 
 const HomePage: React.FC = () => {
     const [showSplash, setShowSplash] = useState(true);
@@ -27,6 +28,7 @@ const HomePage: React.FC = () => {
                 <FilterSection />
                 <CarouselMenu />
             </div>
+            <AppointmentContactForm />
         </div>
     );
 };
