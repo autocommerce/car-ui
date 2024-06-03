@@ -42,7 +42,7 @@ export default function FilterSection() {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: '300px',
+                width: '20%',
                 p: 2,
 
                 background: 'white',
