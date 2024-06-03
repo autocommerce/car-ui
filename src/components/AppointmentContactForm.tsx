@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -9,7 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 const appointmentSchema = z.object({
     name: z.string().nonempty('Name is required'),
     email: z.string().email('Invalid email address'),
-    date: z.date(),
+    date: z.date()
 });
 
 type AppointmentFormValues = z.infer<typeof appointmentSchema>;
@@ -17,7 +17,7 @@ type AppointmentFormValues = z.infer<typeof appointmentSchema>;
 const contactSchema = z.object({
     name: z.string().nonempty('Name is required'),
     email: z.string().email('Invalid email address'),
-    message: z.string().nonempty('Message is required'),
+    message: z.string().nonempty('Message is required')
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -26,9 +26,9 @@ export default function AppointmentPage() {
     const {
         handleSubmit: handleSubmitAppointment,
         control: controlAppointment,
-        formState: { errors: errorsAppointment },
+        formState: { errors: errorsAppointment }
     } = useForm<AppointmentFormValues>({
-        resolver: zodResolver(appointmentSchema),
+        resolver: zodResolver(appointmentSchema)
     });
 
     const onSubmitAppointment = (data: AppointmentFormValues) => {
@@ -38,9 +38,9 @@ export default function AppointmentPage() {
     const {
         handleSubmit: handleSubmitContact,
         control: controlContact,
-        formState: { errors: errorsContact },
+        formState: { errors: errorsContact }
     } = useForm<ContactFormValues>({
-        resolver: zodResolver(contactSchema),
+        resolver: zodResolver(contactSchema)
     });
 
     const onSubmitContact = (data: ContactFormValues) => {
@@ -56,10 +56,11 @@ export default function AppointmentPage() {
                 justifyContent: 'center',
                 marginTop: '10px',
                 padding: 2,
-                backgroundImage: 'url("https://www.shutterstock.com/image-photo/beautiful-receptionist-talking-on-phone-260nw-2090759692.jpg")',
+                backgroundImage:
+                    'url("https://www.shutterstock.com/image-photo/beautiful-receptionist-talking-on-phone-260nw-2090759692.jpg")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                position: 'relative',
+                position: 'relative'
             }}
         >
             <Typography variant="h4" gutterBottom>
@@ -77,7 +78,7 @@ export default function AppointmentPage() {
                             padding: 3,
                             borderRadius: 2,
                             backgroundColor: 'rgba(250, 250, 250, 0.4)',
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
                         }}
                     >
                         <Typography variant="h5">Contact Us</Typography>
@@ -90,7 +91,11 @@ export default function AppointmentPage() {
                                     label="Name"
                                     variant="outlined"
                                     error={!!errorsContact.name}
-                                    helperText={errorsContact.name ? errorsContact.name.message : ''}
+                                    helperText={
+                                        errorsContact.name
+                                            ? errorsContact.name.message
+                                            : ''
+                                    }
                                 />
                             )}
                         />
@@ -103,7 +108,11 @@ export default function AppointmentPage() {
                                     label="Email"
                                     variant="outlined"
                                     error={!!errorsContact.email}
-                                    helperText={errorsContact.email ? errorsContact.email.message : ''}
+                                    helperText={
+                                        errorsContact.email
+                                            ? errorsContact.email.message
+                                            : ''
+                                    }
                                 />
                             )}
                         />
@@ -118,11 +127,19 @@ export default function AppointmentPage() {
                                     multiline
                                     rows={1}
                                     error={!!errorsContact.message}
-                                    helperText={errorsContact.message ? errorsContact.message.message : ''}
+                                    helperText={
+                                        errorsContact.message
+                                            ? errorsContact.message.message
+                                            : ''
+                                    }
                                 />
                             )}
                         />
-                        <Button type="submit" variant="contained" color="success">
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="success"
+                        >
                             Send
                         </Button>
                     </Box>
@@ -139,7 +156,7 @@ export default function AppointmentPage() {
                             backgroundColor: 'rgba(250, 250, 250, 0.4)',
                             padding: 3,
                             borderRadius: 2,
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)',
+                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
                         }}
                     >
                         <Typography variant="h5">Appointment Form</Typography>
@@ -152,7 +169,11 @@ export default function AppointmentPage() {
                                     label="Name"
                                     variant="outlined"
                                     error={!!errorsAppointment.name}
-                                    helperText={errorsAppointment.name ? errorsAppointment.name.message : ''}
+                                    helperText={
+                                        errorsAppointment.name
+                                            ? errorsAppointment.name.message
+                                            : ''
+                                    }
                                 />
                             )}
                         />
@@ -165,7 +186,11 @@ export default function AppointmentPage() {
                                     label="Email"
                                     variant="outlined"
                                     error={!!errorsAppointment.email}
-                                    helperText={errorsAppointment.email ? errorsAppointment.email.message : ''}
+                                    helperText={
+                                        errorsAppointment.email
+                                            ? errorsAppointment.email.message
+                                            : ''
+                                    }
                                 />
                             )}
                         />
@@ -173,7 +198,9 @@ export default function AppointmentPage() {
                             name="date"
                             control={controlAppointment}
                             render={({ field }) => (
-                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <LocalizationProvider
+                                    dateAdapter={AdapterDateFns}
+                                >
                                     <DateTimePicker
                                         {...field}
                                         renderInput={(params) => (
@@ -182,14 +209,22 @@ export default function AppointmentPage() {
                                                 label="Date & Time"
                                                 variant="outlined"
                                                 error={!!errorsAppointment.date}
-                                                helperText={errorsAppointment.date ? 'Date and time is required' : ''}
+                                                helperText={
+                                                    errorsAppointment.date
+                                                        ? 'Date and time is required'
+                                                        : ''
+                                                }
                                             />
                                         )}
                                     />
                                 </LocalizationProvider>
                             )}
                         />
-                        <Button type="submit" variant="contained" color="success">
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="success"
+                        >
                             Validate
                         </Button>
                     </Box>

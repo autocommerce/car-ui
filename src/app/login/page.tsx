@@ -87,11 +87,13 @@ const CustomLoginPage: React.FC = () => {
                         Login
                     </Button>
                 </Box>
-                <Button 
-                    variant="contained"
-                    sx={{ width: "50%" }}
-                >
-                    <Link href="/signup" style={{textDecoration: 'none' , color: 'white'}}>Sign Up</Link>
+                <Button variant="contained" sx={{ width: '50%' }}>
+                    <Link
+                        href="/signup"
+                        style={{ textDecoration: 'none', color: 'white' }}
+                    >
+                        Sign Up
+                    </Link>
                 </Button>
             </Box>
             <Notification />

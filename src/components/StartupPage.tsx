@@ -7,14 +7,14 @@ import golfImage from '@/assets/images/golf.png';
 
 const StartupPage = () => {
     return (
-        <Container sx={{width:'100%'}}>
-            <Box sx={{ display: 'flex', flexDirection:'row'}}>
+        <Container sx={{ width: '100%' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <Box
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center',
+                        justifyContent: 'center'
                     }}
                 >
                     <Typography variant="h2" component="h1" gutterBottom>
@@ -34,24 +34,24 @@ const StartupPage = () => {
                     }}
                 >
                     <Box
-                    sx={{
-                        width: '90%', 
-                        height: '90vh',
-                        background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', 
-                        borderRadius: '90%', 
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        color: '#000',
-                        marginBottom: '-60%'
-                    }}
-                    >
-                    </Box>
+                        sx={{
+                            width: '90%',
+                            height: '90vh',
+                            background:
+                                'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                            borderRadius: '90%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            color: '#000',
+                            marginBottom: '-60%'
+                        }}
+                    ></Box>
                     <Image
                         src={golfImage}
                         alt="Golf Car"
                         width={650}
-                        height={500}                
+                        height={500}
                     />
                 </Box>
             </Box>
