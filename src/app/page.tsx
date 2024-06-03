@@ -5,6 +5,7 @@ import FilterSection from '@/components/FilterSection';
 import CarouselMenu from '@/components/CarouselMenu';
 import StartupPage from '../components/StartupPage';
 import AppointmentContactForm from '@/components/AppointmentContactForm';
+import SelectClient from '@/components/SelectClient';
 
 const HomePage: React.FC = () => {
     const [showSplash, setShowSplash] = useState(true);
@@ -28,6 +29,7 @@ const HomePage: React.FC = () => {
                 <FilterSection />
                 <CarouselMenu />
             </div>
+            <SelectClient />
             <AppointmentContactForm />
         </div>
     );
