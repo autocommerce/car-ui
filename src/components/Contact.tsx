@@ -1,66 +1,40 @@
 /** @jsxImportSource react */ // Ensure proper JSX handling
 'use client';
 
-import { TextField, Button, TextareaAutosize, Box } from '@mui/material';
+import { TextField, Button, TextareaAutosize, Box, Typography } from '@mui/material';
 import sendEmail from './EmailSend/sendMail';
-import { useState } from 'react';
+import { z } from 'zod';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const schema = z.object({
+    name: z.string().min(1, 'Name is required'),
+    email: z.string().email('Invalid email address'),
+    message: z.string().min(1, 'Message is required')
+});
 
 export default function ContactSection() {
-    const [formValue, setFormValue] = useState({
-        name: '',
-        email: '',
-        message: ''
+    const {
+        control,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: zodResolver(schema)
     });
 
-    const [notif, setNotif] = useState({
-        status: false,
-        isError: false,
-        message: ''
-    });
-
-    const hideNotif = () => {
-        setTimeout(() => {
-            setNotif({ ...notif, status: false });
-        }, 2000);
-    };
-
-    const handleFormChange = (event: any) => {
-        const { name, value } = event.target;
-        setFormValue((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        setNotif({
-            status: true,
-            isError: false,
-            message: "Message en cours d'envoie !"
-        });
-
-        sendEmail(formValue)
-            .then(() => {
-                setNotif({
-                    status: true,
-                    isError: false,
-                    message: 'Message envoyé avec succès'
-                });
-            })
-            .catch(() => {
-                setNotif({
-                    status: true,
-                    isError: true,
-                    message: "Une erreur s'est produite"
-                });
-            })
-            .finally(() => {
-                hideNotif();
-            });
+    const onSubmit = async (data: any) => {
+        try {
+            await sendEmail(data);
+            alert('Message sent successfully');
+        } catch (error) {
+            alert('An error occurred');
+        }
     };
 
     return (
         <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -72,48 +46,69 @@ export default function ContactSection() {
                 maxWidth: 400
             }}
         >
-            <TextField
-                required
-                label="Your Name"
+            <Controller
                 name="name"
-                variant="outlined"
-                fullWidth
-                value={formValue.name}
-                onChange={handleFormChange}
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        required
+                        label="Your Name"
+                        variant="outlined"
+                        fullWidth
+                        error={!!errors.name}
+                        helperText={errors.name?.message as React.ReactNode}
+                    />
+                )}
             />
-            <TextField
-                required
-                label="Your Email"
+            <Controller
                 name="email"
-                type="email"
-                variant="outlined"
-                fullWidth
-                value={formValue.email}
-                onChange={handleFormChange}
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        required
+                        label="Your Email"
+                        type="email"
+                        variant="outlined"
+                        fullWidth
+                        error={!!errors.email}
+                        helperText={errors.email?.message as React.ReactNode}
+                    />
+                )}
             />
-            <TextareaAutosize
-                minRows={3}
-                placeholder="Your Message"
+            <Controller
                 name="message"
-                style={{
-                    width: '90%',
-                    padding: '18.5px 14px',
-                    fontSize: '1rem',
-                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-                    borderRadius: '4px',
-                    borderColor: '#ced4da'
-                }}
-                value={formValue.message}
-                onChange={handleFormChange}
+                control={control}
+                defaultValue=""
+                render={({ field, fieldState: { error } }) => (
+                    <>
+                        <TextareaAutosize
+                            {...field}
+                            minRows={3}
+                            placeholder="Your Message"
+                            style={{
+                                width: '90%',
+                                padding: '18.5px 14px',
+                                fontSize: '1rem',
+                                fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                                borderRadius: '4px',
+                                borderColor: error ? 'red' : '#ced4da'
+                            }}
+                        />
+                        {error && (
+                            <Typography color="error" variant="caption">
+                                {error.message}
+                            </Typography>
+                        )}
+                    </>
+                )}
             />
             <Button type="submit" variant="contained" color="primary">
                 Submit
             </Button>
-            {notif.status && (
-                <div style={{ color: notif.isError ? 'red' : 'green' }}>
-                    {notif.message}
-                </div>
-            )}
         </Box>
     );
 }
