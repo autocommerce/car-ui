@@ -8,7 +8,15 @@ import Typography from '@mui/material/Typography';
 
 export default function CardCar() {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card 
+            sx={{
+                maxWidth: 345,
+                '&:hover': {
+                    boxShadow: '0 0 15px 0 gray',
+                },
+                transition: 'box-shadow 0.3s ease-in-out',
+            }}
+        >
             <CardMedia
                 component="img"
                 alt="green iguana"
@@ -26,7 +34,7 @@ export default function CardCar() {
                 <Typography variant="h5">$60.00</Typography>
             </CardContent>
             <CardActions sx={{ ml: '5%' }}>
-                <Button size="small" variant="contained">
+                <Button size="small" variant="outlined">
                     Buy
                 </Button>
             </CardActions>

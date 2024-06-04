@@ -5,7 +5,7 @@ import FilterSection from '@/components/FilterSection';
 import CarouselMenu from '@/components/CarouselMenu';
 import ContactSection from '@/components/Contact';
 import StartupPage from '../components/StartupPage';
-import CardCar from '@/components/CardCar';
+import CardCar from '@/components/car/CardCar';
 const HomePage: React.FC = () => {
     const [showSplash, setShowSplash] = useState(true);
 
