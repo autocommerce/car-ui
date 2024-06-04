@@ -76,10 +76,13 @@ export default function HeadMenu() {
         setIsMenuOpen(!isMenuOpen);
     };
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar
                 position="static"
-                sx={{ backgroundColor: 'rgba(128, 128, 128, 0.3)' }}
+                sx={{
+                    backgroundColor: 'rgba(45, 45, 46, 0.842)',
+                    color: 'whitesmoke'
+                }}
             >
                 <Toolbar>
                     <IconButton
@@ -136,6 +139,14 @@ export default function HeadMenu() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
+                    <Button variant="contained" sx={{ ml: 2 }}>
+                        <Link
+                            href="/signup"
+                            style={{ textDecoration: 'none', color: 'white' }}
+                        >
+                            sign up
+                        </Link>
+                    </Button>
                     <Button variant="contained" sx={{ ml: 2 }}>
                         <Link
                             href="/dashboard"
