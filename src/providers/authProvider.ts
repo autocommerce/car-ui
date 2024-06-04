@@ -3,11 +3,25 @@ import {
     getAuth,
     signInWithEmailAndPassword,
     signOut,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    UserCredential
 } from 'firebase/auth';
 import { firebaseApp } from '../config/firebase';
 
 const firebaseAuth = getAuth(firebaseApp);
+
+const BEARER_LOCALSTORAGE_NAME = 'token';
+const cacheToken = async (credential: UserCredential) => {
+    localStorage.setItem(
+        BEARER_LOCALSTORAGE_NAME,
+        await credential.user.getIdToken()
+    );
+    return credential;
+};
+
+export const getCachedToken = () => {
+    return localStorage.getItem(BEARER_LOCALSTORAGE_NAME);
+};
 
 interface LoginParams {
     email: string;
@@ -28,8 +42,8 @@ const authProvider: AuthProvider = {
                 email,
                 password
             );
+            cacheToken(userCredential);
             const user = userCredential.user;
-            // Optionally save the username in user profile or database
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('username', username);
             return Promise.resolve();
@@ -40,13 +54,13 @@ const authProvider: AuthProvider = {
     },
 
     login: async ({ email, password }: LoginParams) => {
-        // Utilisation correcte de 'email'
         try {
             const userCredential = await signInWithEmailAndPassword(
                 firebaseAuth,
                 email,
                 password
             );
+            cacheToken(userCredential);
             const user = userCredential.user;
             localStorage.setItem('user', JSON.stringify(user));
             return Promise.resolve();
