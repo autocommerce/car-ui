@@ -1,7 +1,13 @@
 /** @jsxImportSource react */ // Ensure proper JSX handling
 'use client';
 
-import { TextField, Button, TextareaAutosize, Box, Typography } from '@mui/material';
+import {
+    TextField,
+    Button,
+    TextareaAutosize,
+    Box,
+    Typography
+} from '@mui/material';
 import sendEmail from './EmailSend/sendMail';
 import { z } from 'zod';
 import { useForm, Controller } from 'react-hook-form';
@@ -17,7 +23,8 @@ export default function ContactSection() {
     const {
         control,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        reset  // Added reset here
     } = useForm({
         resolver: zodResolver(schema)
     });
@@ -26,6 +33,7 @@ export default function ContactSection() {
         try {
             await sendEmail(data);
             alert('Message sent successfully');
+            reset(); 
         } catch (error) {
             alert('An error occurred');
         }
@@ -93,7 +101,8 @@ export default function ContactSection() {
                                 width: '90%',
                                 padding: '18.5px 14px',
                                 fontSize: '1rem',
-                                fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+                                fontFamily:
+                                    '"Roboto","Helvetica","Arial",sans-serif',
                                 borderRadius: '4px',
                                 borderColor: error ? 'red' : '#ced4da'
                             }}
