@@ -11,7 +11,6 @@ const AdminApp: React.FC = () => (
         authProvider={authProvider}
         loginPage={CustomLoginPage}
     >
-        
         <Resource name="users" list={ListGuesser} />
         <Resource name="cars" list={ListGuesser} edit={EditGuesser} />
         <Resource name="comments" list={ListGuesser} edit={EditGuesser} />

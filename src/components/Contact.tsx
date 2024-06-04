@@ -24,7 +24,7 @@ export default function ContactSection() {
         control,
         handleSubmit,
         formState: { errors },
-        reset  // Added reset here
+        reset // Added reset here
     } = useForm({
         resolver: zodResolver(schema)
     });
@@ -33,7 +33,7 @@ export default function ContactSection() {
         try {
             await sendEmail(data);
             alert('Message sent successfully');
-            reset(); 
+            reset();
         } catch (error) {
             alert('An error occurred');
         }
