@@ -1,110 +1,61 @@
 {
-    "cars": [
+  "cars": [
       {
-        "id": 1,
-        "name": "Model S",
-        "description": "A luxury electric sedan with long range and high performance.",
-        "brand": "Tesla",
-        "model": "2021",
-        "price": 79999,
-        "color": "Red",
-        "motorType": "Electric",
-        "power": "1020 hp",
-        "placeNumber": 5,
-        "status": "Pinned",
-        "type": "Sedan"
+          "id": "1",
+          "image": "/porche.jpg",
+          "title": "Porsche",
+          "description": "We care about the durability of our products and we are sure that it is perfect. As you understan...",
+          "price": "$60.00"
       },
       {
-        "id": 2,
-        "name": "Mustang",
-        "description": "An iconic muscle car with modern technology and performance.",
-        "brand": "Ford",
-        "model": "2020",
-        "price": 55999,
-        "color": "Blue",
-        "motorType": "Gasoline",
-        "power": "450 hp",
-        "placeNumber": 4,
-        "status": "Not Pinned",
-        "type": "Coupe"
+          "id": "2",
+          "image": "/ferrari.jpg",
+          "title": "Ferrari",
+          "description": "Experience the thrill of driving a Ferrari with our latest model, combining speed and luxury.",
+          "price": "$200.00"
       },
       {
-        "id": 3,
-        "name": "Civic",
-        "description": "A reliable and fuel-efficient compact car with advanced features.",
-        "brand": "Honda",
-        "model": "2022",
-        "price": 25999,
-        "color": "Black",
-        "motorType": "Gasoline",
-        "power": "158 hp",
-        "placeNumber": 5,
-        "status": "Pinned",
-        "type": "Sedan"
-      },
-      {
-        "id": 4,
-        "name": "Rav4",
-        "description": "A versatile SUV with a comfortable ride and ample cargo space.",
-        "brand": "Toyota",
-        "model": "2021",
-        "price": 32999,
-        "color": "White",
-        "motorType": "Hybrid",
-        "power": "219 hp",
-        "placeNumber": 5,
-        "status": "Not Pinned",
-        "type": "SUV"
-      },
-      {
-        "id": 5,
-        "name": "Model X",
-        "description": "A high-performance electric SUV with advanced safety features.",
-        "brand": "Tesla",
-        "model": "2022",
-        "price": 89999,
-        "color": "Silver",
-        "motorType": "Electric",
-        "power": "1020 hp",
-        "placeNumber": 7,
-        "status": "Pinned",
-        "type": "SUV"
+          "id": "3",
+          "image": "/lamborghini.jpg",
+          "title": "Lamborghini",
+          "description": "Feel the power of a Lamborghini, designed for those who seek an adrenaline rush.",
+          "price": "$180.00"
       }
-    ],
-    "users": [
-        {
+  ],
+  "users": [
+      {
           "id": 1,
           "email": "admin@example.com",
           "password": "hashed_password",
           "name": "Admin User"
-        },
-        {
+      },
+      {
           "id": 2,
           "email": "john.doe@example.com",
           "password": "hashed_password",
           "name": "John Doe"
-        },
-        {
+      },
+      {
           "id": 3,
           "email": "jane.smith@example.com",
           "password": "hashed_password",
           "name": "Jane Smith"
-        },
-        {
+      },
+      {
           "id": 4,
           "email": "alice.wonderland@example.com",
           "password": "hashed_password",
           "name": "Alice Wonderland"
-        },
-        {
+      },
+      {
           "id": 5,
           "email": "bob.marley@example.com",
           "password": "hashed_password",
           "name": "Bob Marley"
-        }
-    ],
-    "appointments": [
-        {
+      }
+  ],
+  "appointments": [
+      {
           "id": 1,
           "carId": 1,
           "name": "John Doe",
@@ -114,8 +65,8 @@
           "contact": "123-456-7890",
           "appointmentDate": "2024-06-10T09:00:00",
           "status": "pending"
-        },
-        {
+      },
+      {
           "id": 2,
           "carId": 3,
           "name": "Jane Smith",
@@ -125,8 +76,8 @@
           "contact": "987-654-3210",
           "appointmentDate": "2024-06-12T10:30:00",
           "status": "validated"
-        },
-        {
+      },
+      {
           "id": 3,
           "carId": 2,
           "name": "Alice Wonderland",
@@ -136,8 +87,8 @@
           "contact": "456-789-0123",
           "appointmentDate": "2024-06-15T14:00:00",
           "status": "rejected"
-        },
-        {
+      },
+      {
           "id": 4,
           "carId": 4,
           "name": "Bob Marley",
@@ -147,7 +98,6 @@
           "contact": "789-012-3456",
           "appointmentDate": "2024-06-20T11:00:00",
           "status": "archived"
-        }
-    ]
+      }
+  ]
 }
-  
