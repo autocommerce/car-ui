@@ -6,6 +6,7 @@ import CarouselMenu from '@/components/CarouselMenu';
 import ContactSection from '@/components/Contact';
 import StartupPage from '../components/StartupPage';
 import CardCar from '@/app/car/CardCar';
+import AppointmentPage from '@/components/AppointmentContactForm';
 
 type Car = {
     id: string;
@@ -44,14 +45,14 @@ const HomePage: React.FC = () => {
             <div
                 style={{
                     display: 'flex',
-                    marginTop: '20px',
                     flexDirection: 'row',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    marginTop: '20px',
+                    gap: '20px'
                 }}
             >
                 <FilterSection />
                 <CarouselMenu />
-                <ContactSection />
             </div>
             <div
                 style={{
@@ -62,13 +63,13 @@ const HomePage: React.FC = () => {
                 }}
             >
                 {cars.map((car, index) => (
-                    <CardCar 
-                        key={index} 
+                    <CardCar
+                        key={index}
                         id={car.id}
-                        image={car.image} 
-                        title={car.title} 
-                        description={car.description} 
-                        price={car.price} 
+                        image={car.image}
+                        title={car.title}
+                        description={car.description}
+                        price={car.price}
                     />
                 ))}
             </div>
@@ -81,15 +82,18 @@ const HomePage: React.FC = () => {
                 }}
             >
                 {cars.map((car, index) => (
-                    <CardCar 
-                        key={index + cars.length} 
+                    <CardCar
+                        key={index + cars.length}
                         id={car.id}
-                        image={car.image} 
-                        title={car.title} 
-                        description={car.description} 
-                        price={car.price} 
+                        image={car.image}
+                        title={car.title}
+                        description={car.description}
+                        price={car.price}
                     />
                 ))}
+            </div>
+            <div>
+            <AppointmentPage />
             </div>
         </div>
     );

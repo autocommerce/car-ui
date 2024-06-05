@@ -43,6 +43,9 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, title, description, price 
                     <Button size="small" variant="outlined">
                         Buy
                     </Button>
+                    <Button size="small" variant="outlined">
+                        more info
+                    </Button>
                 </CardActions>
             </Card>
         </Link>

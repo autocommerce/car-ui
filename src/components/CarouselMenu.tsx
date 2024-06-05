@@ -28,7 +28,7 @@ const carImages = [
 
 const CarouselContainer = styled(Box)({
     position: 'relative',
-    width: '45%',
+    width: '80%',
     height: '400px',
     overflow: 'hidden',
     marginLeft: '20px',
