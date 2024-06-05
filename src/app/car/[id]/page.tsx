@@ -17,7 +17,6 @@ type Car = {
 
 const DescriptionPage: React.FC = () => {
     const { id } = useParams();
-    
     console.log('Car ID:', id); // Log the car ID
 
     const [carDetails, setCarDetails] = useState<Car | null>(null);
