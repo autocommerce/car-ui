@@ -114,7 +114,7 @@ export default function ContactSection() {
                         </>
                     )}
                 />
-                <Button type="submit" variant="contained" color="success">
+                <Button type="submit" variant="contained" >
                     Submit
                 </Button>
             </Box>

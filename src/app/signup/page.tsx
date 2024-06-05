@@ -13,6 +13,15 @@ import { useRouter } from 'next/navigation';
 import authProvider from '@/providers/authProvider';
 import Link from 'next/link';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: 'rgba(126, 126, 129, 0.842)',
+        },
+    },
+});
 
 const CustomSignUpPage: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -36,7 +45,7 @@ const CustomSignUpPage: React.FC = () => {
     };
 
     return (
-        <div>
+        <ThemeProvider theme={theme} >
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -119,7 +128,7 @@ const CustomSignUpPage: React.FC = () => {
             <Box
                 sx={{
                     ml: 2,
-                    backgroundColor: 'blue',
+                    backgroundColor: 'rgba(126, 126, 129, 0.842)',
                     borderRadius: '80%',
                     height: '45px',
                     width: '45px',
@@ -141,7 +150,7 @@ const CustomSignUpPage: React.FC = () => {
                     <ArrowBackIosIcon />
                 </Link>
             </Box>
-        </div>
+        </ThemeProvider>
     );
 };
 

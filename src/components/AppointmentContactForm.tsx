@@ -141,7 +141,6 @@ export default function AppointmentPage() {
                         <Button
                             type="submit"
                             variant="contained"
-                            color="success"
                         >
                             Validate
                         </Button>

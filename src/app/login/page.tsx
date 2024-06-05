@@ -84,12 +84,12 @@ const CustomLoginPage: React.FC = () => {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 3, mb: 2 ,backgroundColor: 'rgba(126, 126, 129, 0.842)'}}
                         >
                             Login
                         </Button>
                     </Box>
-                    <Button variant="contained" sx={{ width: '50%' }}>
+                    <Button variant="contained" sx={{ width: '50%' ,backgroundColor: 'rgba(126, 126, 129, 0.842)'}}>
                         <Link
                             href="/signup"
                             style={{ textDecoration: 'none', color: 'white' }}
@@ -103,7 +103,7 @@ const CustomLoginPage: React.FC = () => {
             <Box
                 sx={{
                     ml: 2,
-                    backgroundColor: 'blue',
+                    backgroundColor: 'rgba(126, 126, 129, 0.842)',
                     borderRadius: '80%',
                     height: '45px',
                     width: '45px',

@@ -115,7 +115,7 @@ export default function HeadMenu() {
                                 fontSize: '30px',
                                 padding: '5px',
                                 fontFamily: 'Courier New, monospace',
-                                color: 'orange'
+                                color: 'white'
                             },
                             '& .icon': {
                                 verticalAlign: 'middle',
@@ -126,9 +126,8 @@ export default function HeadMenu() {
                             }
                         }}
                     >
-                        <span>Car</span>
+                        <span>Vaika</span>
                         <LocalShippingOutlinedIcon className="icon" />
-                        <span>Amidy</span>
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
