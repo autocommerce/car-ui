@@ -1,6 +1,6 @@
 // CardCar.tsx
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@mui/material';
 import Link from 'next/link';
 
 type CardCarProps = {
@@ -13,39 +13,55 @@ type CardCarProps = {
 
 const CardCar: React.FC<CardCarProps> = ({ id, image, title, description, price }) => {
     return (
-        <Link href={`/car/${id}`} passHref>
+        <Box sx={{ textDecoration: 'none' }}>
             <Card
                 sx={{
-                    maxWidth: 345,
-                    '&:hover': {
-                        boxShadow: '0 0 15px 0 gray',
-                    },
+                    width: '100%',
+                    borderRadius: '10px',
+                    boxShadow: '0px 5px 15px rgba(0, 0, 0, 0.1)',
                     transition: 'box-shadow 0.3s ease-in-out',
                     cursor: 'pointer',
+                    '&:hover': {
+                        boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.2)',
+                    },
+                    textDecoration: 'none'
                 }}
             >
-                <CardMedia
-                    component="img"
-                    alt={title}
-                    height="240"
-                    image={image}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                <Link href={`/car/${id}`} passHref>
+                    <CardMedia
+                        component="img"
+                        alt={title}
+                        height="240"
+                        image={image}
+                        sx={{
+                            borderTopLeftRadius: '10px',
+                            borderTopRightRadius: '10px',
+                            textDecoration: 'none',
+                            cursor: 'pointer'
+                        }}
+                    />
+                </Link>
+                <CardContent sx={{ textDecoration: 'none' }}>
+                    <Typography gutterBottom variant="h5" component="div" sx={{ textDecoration: 'none' }}>
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.primary" sx={{ textDecoration: 'none' }}>
                         {description.substring(0, 60) + '...'}
                     </Typography>
-                    <Typography variant="h5">{price}</Typography>
+                    <Typography variant="h5" sx={{ textDecoration: 'none' }}>
+                        {price}
+                    </Typography>
                 </CardContent>
-                <CardActions sx={{ ml: '5%' }}>
-                    <Button size="small" variant="outlined">
+                <CardActions sx={{ ml: '5%', textDecoration: 'none' }}>
+                    <Button size="small" variant="contained" sx={{ textDecoration: 'none' }}>
                         Buy
+                    </Button>
+                    <Button size="small" variant="contained" color="warning" sx={{ textDecoration: 'none' }}>
+                        More info
                     </Button>
                 </CardActions>
             </Card>
-        </Link>
+        </Box>
     );
 };
 

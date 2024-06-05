@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import ContactSection from './Contact';
 const appointmentSchema = z.object({
     name: z.string().nonempty('Name is required'),
     email: z.string().email('Invalid email address'),
@@ -35,25 +36,13 @@ export default function AppointmentPage() {
         console.log('Appointment Data:', data);
     };
 
-    const {
-        handleSubmit: handleSubmitContact,
-        control: controlContact,
-        formState: { errors: errorsContact }
-    } = useForm<ContactFormValues>({
-        resolver: zodResolver(contactSchema)
-    });
-
-    const onSubmitContact = (data: ContactFormValues) => {
-        console.log('Contact Data:', data);
-    };
-
     return (
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
                 marginTop: '10px',
                 padding: 2,
                 backgroundImage:
@@ -66,82 +55,11 @@ export default function AppointmentPage() {
             <Typography variant="h4" gutterBottom>
                 Appointment & Contact Us
             </Typography>
-            <Grid container spacing={6}>
+            <Grid container spacing={10}>
                 <Grid item xs={12} md={6}>
                     <Box
-                        component="form"
-                        onSubmit={handleSubmitContact(onSubmitContact)}
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: 2,
-                            padding: 3,
-                            borderRadius: 2,
-                            backgroundColor: 'rgba(250, 250, 250, 0.4)',
-                            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
-                        }}
                     >
-                        <Typography variant="h5">Contact Us</Typography>
-                        <Controller
-                            name="name"
-                            control={controlContact}
-                            render={({ field }) => (
-                                <TextField
-                                    {...field}
-                                    label="Name"
-                                    variant="outlined"
-                                    error={!!errorsContact.name}
-                                    helperText={
-                                        errorsContact.name
-                                            ? errorsContact.name.message
-                                            : ''
-                                    }
-                                />
-                            )}
-                        />
-                        <Controller
-                            name="email"
-                            control={controlContact}
-                            render={({ field }) => (
-                                <TextField
-                                    {...field}
-                                    label="Email"
-                                    variant="outlined"
-                                    error={!!errorsContact.email}
-                                    helperText={
-                                        errorsContact.email
-                                            ? errorsContact.email.message
-                                            : ''
-                                    }
-                                />
-                            )}
-                        />
-                        <Controller
-                            name="message"
-                            control={controlContact}
-                            render={({ field }) => (
-                                <TextField
-                                    {...field}
-                                    label="Message"
-                                    variant="outlined"
-                                    multiline
-                                    rows={1}
-                                    error={!!errorsContact.message}
-                                    helperText={
-                                        errorsContact.message
-                                            ? errorsContact.message.message
-                                            : ''
-                                    }
-                                />
-                            )}
-                        />
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="success"
-                        >
-                            Send
-                        </Button>
+                        <ContactSection />
                     </Box>
                 </Grid>
 
@@ -223,7 +141,6 @@ export default function AppointmentPage() {
                         <Button
                             type="submit"
                             variant="contained"
-                            color="success"
                         >
                             Validate
                         </Button>

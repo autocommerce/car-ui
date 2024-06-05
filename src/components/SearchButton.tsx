@@ -12,7 +12,6 @@ const SearchButton: React.FC<SearchButtonProps> = ({ onClick, disabled }) => {
     return (
         <Button
             variant="contained"
-            color="success"
             onClick={onClick}
             disabled={disabled}
             startIcon={<SearchIcon />}
