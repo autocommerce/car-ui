@@ -54,16 +54,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         }
     }
 }));
+
 const NavBar = styled('div')({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginLeft: '80px'
+    width: '100%'
 });
+
 const NavBarLink = styled('a')(({ theme }) => ({
     color: theme.palette.common.black,
     textDecoration: 'none',
-    margin: theme.spacing(0, 4),
+    margin: theme.spacing(0, 2),
     '&:hover': {
         color: theme.palette.warning.main
     }
@@ -75,14 +77,14 @@ export default function HeadMenu() {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
     return (
-        <Box sx={{}}>
+        <Box sx={{ width: '100%', margin: 0, padding: 0 }}>
             <AppBar
                 position="static"
                 sx={{
                     backgroundColor: 'rgba(45, 45, 46, 0.842)',
-                    color: 'whitesmoke',
-                    borderRadius: '10%'
+                    color: 'whitesmoke'
                 }}
             >
                 <Toolbar>
@@ -97,9 +99,33 @@ export default function HeadMenu() {
                     </IconButton>
                     {isMenuOpen ? (
                         <NavBar>
-                            <NavBarLink href="#">Home</NavBarLink>
-                            <NavBarLink href="#">Brand</NavBarLink>
-                            <NavBarLink href="#">Contact</NavBarLink>
+                            <Link
+                                href="/"
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'white'
+                                }}
+                            >
+                                Home
+                            </Link>
+                            <Link
+                                href="/contact"
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'white'
+                                }}
+                            >
+                                Contact
+                            </Link>
+                            <Link
+                                href="/product"
+                                style={{
+                                    textDecoration: 'none',
+                                    color: 'white'
+                                }}
+                            >
+                                Product
+                            </Link>
                         </NavBar>
                     ) : null}
                     <Typography
@@ -139,15 +165,27 @@ export default function HeadMenu() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </Search>
-                    <Button variant="contained" sx={{ ml: 2 }}>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            ml: 2,
+                            backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                        }}
+                    >
                         <Link
                             href="/signup"
                             style={{ textDecoration: 'none', color: 'white' }}
                         >
-                            sign up
+                            Sign up
                         </Link>
                     </Button>
-                    <Button variant="contained" sx={{ ml: 2 }}>
+                    <Button
+                        variant="contained"
+                        sx={{
+                            ml: 2,
+                            backgroundColor: 'rgba(126, 126, 129, 0.842)'
+                        }}
+                    >
                         <Link
                             href="/dashboard"
                             style={{ textDecoration: 'none', color: 'white' }}
