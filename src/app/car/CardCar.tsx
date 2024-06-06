@@ -1,4 +1,3 @@
-// CardCar.tsx
 import React from 'react';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@mui/material';
 import Link from 'next/link';
@@ -6,12 +5,13 @@ import Link from 'next/link';
 type CardCarProps = {
     id: string;
     image: string;
-    title: string;
+    brand: string;
+    model: string;
     description: string;
     price: string;
 };
 
-const CardCar: React.FC<CardCarProps> = ({ id, image, title, description, price }) => {
+const CardCar: React.FC<CardCarProps> = ({ id, image, brand, model, description, price }) => {
     return (
         <Box sx={{ textDecoration: 'none' }}>
             <Card
@@ -30,7 +30,7 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, title, description, price 
                 <Link href={`/car/${id}`} passHref>
                     <CardMedia
                         component="img"
-                        alt={title}
+                        alt={`${brand} ${model}`}
                         height="240"
                         image={image}
                         sx={{
@@ -43,7 +43,7 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, title, description, price 
                 </Link>
                 <CardContent sx={{ textDecoration: 'none' }}>
                     <Typography gutterBottom variant="h5" component="div" sx={{ textDecoration: 'none' }}>
-                        {title}
+                        {`${brand} ${model}`}
                     </Typography>
                     <Typography variant="body2" color="text.primary" sx={{ textDecoration: 'none' }}>
                         {description.substring(0, 60) + '...'}

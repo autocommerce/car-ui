@@ -76,12 +76,13 @@ export default function HeadMenu() {
         setIsMenuOpen(!isMenuOpen);
     };
     return (
-        <Box>
+        <Box sx={{}}>
             <AppBar
                 position="static"
                 sx={{
                     backgroundColor: 'rgba(45, 45, 46, 0.842)',
-                    color: 'whitesmoke'
+                    color: 'whitesmoke',
+                    borderRadius:'10%'
                 }}
             >
                 <Toolbar>

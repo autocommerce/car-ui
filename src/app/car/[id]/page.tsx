@@ -9,22 +9,27 @@ import CardCar from '../CardCar';
 
 type Car = {
     id: string;
-    image: string;
-    title: string;
+    imageId: string;
+    brand: string;
+    model: string;
     description: string;
     price: string;
 };
 
+type Image = {
+    id: string;
+    Url: string;
+};
+
 const DescriptionPage: React.FC = () => {
     const { id } = useParams();
-    console.log('Car ID:', id); // Log the car ID
-
     const [carDetails, setCarDetails] = useState<Car | null>(null);
+    const [images, setImages] = useState<Image[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchCarData = async () => {
             if (!id) {
                 setError('No car ID specified');
                 setLoading(false);
@@ -32,32 +37,48 @@ const DescriptionPage: React.FC = () => {
             }
             try {
                 const response = await fetch(`http://localhost:4000/cars/${id}`);
-                if (!response.ok) throw new Error('Failed to fetch data');
+                if (!response.ok) throw new Error('Failed to fetch car data');
                 const data: Car = await response.json();
-                console.log('Fetched Data:', data); // Log the fetched data
                 setCarDetails(data);
             } catch (error) {
-                setError('Error fetching data');
-                console.error('Error fetching data:', error);
-            } finally {
-                setLoading(false);
+                setError('Error fetching car data');
+                console.error('Error fetching car data:', error);
             }
         };
 
-        fetchData();
+        const fetchImagesData = async () => {
+            try {
+                const response = await fetch('http://localhost:4000/images');
+                if (!response.ok) throw new Error('Failed to fetch images');
+                const data: Image[] = await response.json();
+                setImages(data);
+            } catch (error) {
+                setError('Error fetching images');
+                console.error('Error fetching images:', error);
+            }
+        };
+
+        fetchCarData();
+        fetchImagesData();
+        setLoading(false);
     }, [id]);
 
+    const getImageUrl = (imageId: string) => {
+        const image = images.find(img => img.id === imageId);
+        return image ? image.Url : '';
+    };
+
     if (loading) {
-        return null; // Retire les messages de chargement
+        return null;
     }
 
     if (error) {
         console.error(error);
-        return null; // Retire les messages d'erreur
+        return null;
     }
 
     if (!carDetails) {
-        return null; // Retire les messages "Car details not found"
+        return null;
     }
 
     return (
@@ -68,8 +89,9 @@ const DescriptionPage: React.FC = () => {
                 </Typography>
                 <CardCar 
                     id={carDetails.id}
-                    image={carDetails.image}
-                    title={carDetails.title}
+                    image={getImageUrl(carDetails.imageId)}
+                    brand={carDetails.brand}
+                    model={carDetails.model}
                     description={carDetails.description}
                     price={carDetails.price}
                 />
