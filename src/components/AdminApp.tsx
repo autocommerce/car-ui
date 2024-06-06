@@ -8,6 +8,15 @@ import UserIcon from '@mui/icons-material/Group';
 import CarIcon from '@mui/icons-material/DirectionsCar';
 import ImageIcon from '@mui/icons-material/Image';
 import AppointmentIcon from '@mui/icons-material/Event';
+import CarList from '@/components/cars/CarList';
+import CarCreate from '@/components/cars/CarCreate';
+import CarEdit from '@/components/cars/CarEdit';
+import ImageList from '@/components/images/ImageList';
+import ImageCreate from '@/components/images/ImageCreate';
+import ImageEdit from '@/components/images/ImageEdit';
+import AppointmentList from '@/components/appointments/AppointmentList';
+import AppointmentCreate from '@/components/appointments/AppointmentCreate';
+import AppointmentEdit from '@/components/appointments/AppointmentEdit';
 
 const AdminApp: React.FC = () => (
     <Admin
@@ -15,10 +24,10 @@ const AdminApp: React.FC = () => (
         authProvider={authProvider}
         loginPage={CustomLoginPage}
     >
-        <Resource name="users" list={ListGuesser} icon={UserIcon} />
-        <Resource name="cars" list={ListGuesser} edit={EditGuesser} icon={CarIcon} />
-        <Resource name="images" list={ListGuesser} edit={EditGuesser} icon={ImageIcon} />
-        <Resource name="appointments" list={ListGuesser} edit={EditGuesser} icon={AppointmentIcon} />
+        <Resource name="users" list={ListGuesser} edit={EditGuesser} icon={UserIcon} />
+        <Resource name="cars" list={CarList} create={CarCreate} edit={CarEdit} icon={CarIcon} />
+        <Resource name="images" list={ImageList} create={ImageCreate} edit={ImageEdit} icon={ImageIcon} />
+        <Resource name="appointments" list={AppointmentList} create={AppointmentCreate} edit={AppointmentEdit} icon={AppointmentIcon} />
     </Admin>
 );
 
