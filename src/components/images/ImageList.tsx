@@ -1,8 +1,14 @@
 import React from 'react';
-import { List, Datagrid, TextField, ListProps } from 'react-admin';
+import { List, Datagrid, TextField, Filter ,TextInput} from 'react-admin';
 
-const ImageList: React.FC<ListProps> = (props) => (
-    <List {...props}>
+const ImageFilter: React.FC = (props: any) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
+
+const ImageList: React.FC = (props: any) => (
+    <List filters={<ImageFilter />} {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
             <TextField source="url" />
