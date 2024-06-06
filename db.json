@@ -1,103 +1,139 @@
 {
-  "cars": [
+    "cars": [
       {
-          "id": "1",
-          "image": "/porche.jpg",
-          "title": "Porsche",
-          "description": "We care about the durability of our products and we are sure that it is perfect. As you understan...",
-          "price": "$60.00"
+        "id": "1",
+        "image": "/porche.jpg",
+        "title": "Porsche",
+        "description": "We care about the durability of our products and we are sure that it is perfect. As you understan...",
+        "price": "$60.00"
       },
       {
-          "id": "2",
-          "image": "/ferrari.jpg",
-          "title": "Ferrari",
-          "description": "Experience the thrill of driving a Ferrari with our latest model, combining speed and luxury.",
-          "price": "$200.00"
+        "id": "2",
+        "image": "/ferrari.jpg",
+        "title": "Ferrari",
+        "description": "Experience the thrill of driving a Ferrari with our latest model, combining speed and luxury.",
+        "price": "$200.00"
       },
       {
-          "id": "3",
-          "image": "/lamborghini.jpg",
-          "title": "Lamborghini",
-          "description": "Feel the power of a Lamborghini, designed for those who seek an adrenaline rush.",
-          "price": "$180.00"
+        "id": "3",
+        "image": "/lamborghini.jpg",
+        "title": "Lamborghini",
+        "description": "Feel the power of a Lamborghini, designed for those who seek an adrenaline rush.",
+        "price": "$180.00"
+      },
+      {
+        "id": "4",
+        "image": "/bugatti.jpg",
+        "title": "Bugatti",
+        "description": "Explore the epitome of automotive engineering with our Bugatti models, setting new standards in speed and luxury.",
+        "price": "$300.00"
+      },
+      {
+        "id": "5",
+        "image": "/maserati.jpg",
+        "title": "Maserati",
+        "description": "Drive in style and elegance with our Maserati collection, delivering unparalleled performance and sophistication.",
+        "price": "$150.00"
+      },
+      {
+        "id": "6",
+        "image": "/aston-martin.jpg",
+        "title": "Aston Martin",
+        "description": "Experience the essence of British luxury with Aston Martin, delivering exceptional performance and refinement.",
+        "price": "$250.00"
+      },
+      {
+        "id": "7",
+        "image": "/rolls-royce.jpg",
+        "title": "Rolls Royce",
+        "description": "Indulge in the ultimate luxury with Rolls Royce, synonymous with opulence, comfort, and prestige.",
+        "price": "$400.00"
+      },
+      {
+        "id": "8",
+        "image": "/bentley.jpg",
+        "title": "Bentley",
+        "description": "Discover the elegance and sophistication of Bentley, blending luxury and performance seamlessly.",
+        "price": "$220.00"
       }
-  ],
-  "users": [
+    ],
+    "users": [
       {
-          "id": 1,
-          "email": "admin@example.com",
-          "password": "hashed_password",
-          "name": "Admin User"
+        "id": 1,
+        "email": "admin@example.com",
+        "password": "hashed_password",
+        "name": "Admin User"
       },
       {
-          "id": 2,
-          "email": "john.doe@example.com",
-          "password": "hashed_password",
-          "name": "John Doe"
+        "id": 2,
+        "email": "john.doe@example.com",
+        "password": "hashed_password",
+        "name": "John Doe"
       },
       {
-          "id": 3,
-          "email": "jane.smith@example.com",
-          "password": "hashed_password",
-          "name": "Jane Smith"
+        "id": 3,
+        "email": "jane.smith@example.com",
+        "password": "hashed_password",
+        "name": "Jane Smith"
       },
       {
-          "id": 4,
-          "email": "alice.wonderland@example.com",
-          "password": "hashed_password",
-          "name": "Alice Wonderland"
+        "id": 4,
+        "email": "alice.wonderland@example.com",
+        "password": "hashed_password",
+        "name": "Alice Wonderland"
       },
       {
-          "id": 5,
-          "email": "bob.marley@example.com",
-          "password": "hashed_password",
-          "name": "Bob Marley"
+        "id": 5,
+        "email": "bob.marley@example.com",
+        "password": "hashed_password",
+        "name": "Bob Marley"
       }
-  ],
-  "appointments": [
+    ],
+    "appointments": [
       {
-          "id": 1,
-          "carId": 1,
-          "name": "John Doe",
-          "firstName": "John",
-          "email": "john.doe@example.com",
-          "message": "I'm interested in scheduling a test drive.",
-          "contact": "123-456-7890",
-          "appointmentDate": "2024-06-10T09:00:00",
-          "status": "pending"
+        "id": 1,
+        "carId": 1,
+        "name": "John Doe",
+        "firstName": "John",
+        "email": "john.doe@example.com",
+        "message": "I'm interested in scheduling a test drive.",
+        "contact": "123-456-7890",
+        "appointmentDate": "2024-06-10T09:00:00",
+        "status": "pending"
       },
       {
-          "id": 2,
-          "carId": 3,
-          "name": "Jane Smith",
-          "firstName": "Jane",
-          "email": "jane.smith@example.com",
-          "message": "I'd like to discuss financing options.",
-          "contact": "987-654-3210",
-          "appointmentDate": "2024-06-12T10:30:00",
-          "status": "validated"
+        "id": 2,
+        "carId": 3,
+        "name": "Jane Smith",
+        "firstName": "Jane",
+        "email": "jane.smith@example.com",
+        "message": "I'd like to discuss financing options.",
+        "contact": "987-654-3210",
+        "appointmentDate": "2024-06-12T10:30:00",
+        "status": "validated"
       },
       {
-          "id": 3,
-          "carId": 2,
-          "name": "Alice Wonderland",
-          "firstName": "Alice",
-          "email": "alice.wonderland@example.com",
-          "message": "I need maintenance service for my car.",
-          "contact": "456-789-0123",
-          "appointmentDate": "2024-06-15T14:00:00",
-          "status": "rejected"
+        "id": 3,
+        "carId": 2,
+        "name": "Alice Wonderland",
+        "firstName": "Alice",
+        "email": "alice.wonderland@example.com",
+        "message": "I need maintenance service for my car.",
+        "contact": "456-789-0123",
+        "appointmentDate": "2024-06-15T14:00:00",
+        "status": "rejected"
       },
       {
-          "id": 4,
-          "carId": 4,
-          "name": "Bob Marley",
-          "firstName": "Bob",
-          "email": "bob.marley@example.com",
-          "message": "Interested in purchasing this car.",
-          "contact": "789-012-3456",
-          "appointmentDate": "2024-06-20T11:00:00",
-          "status": "archived"
+        "id": 4,
+        "carId": 4,
+        "name": "Bob Marley",
+        "firstName": "Bob",
+        "email": "bob.marley@example.com",
+        "message": "Interested in purchasing this car.",
+        "contact": "789-012-3456",
+        "appointmentDate": "2024-06-20T11:00:00",
+        "status": "archived"
       }
-  ]
-}
+    ]
+  }
+  

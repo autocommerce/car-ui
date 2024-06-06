@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
     }
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={theme}>
             <div style={{ backgroundColor: 'whitesmoke' }}>
                 <HeadMenu />
                 <div
@@ -64,29 +64,50 @@ const HomePage: React.FC = () => {
                     <FilterSection />
                     <CarouselMenu />
                 </div>
-                <div
-                    style={{
-                        display: 'flex',
-                        marginTop: '20px',
-                        flexDirection: 'row',
-                        justifyContent: 'space-around'
-                    }}
-                >
-                    {cars.map((car, index) => (
-                        <CardCar
-                            key={index}
-                            id={car.id}
-                            image={car.image}
-                            title={car.title}
-                            description={car.description}
-                            price={car.price}
-                        />
-                    ))}
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            marginTop: '20px',
+                            flexDirection: 'row',
+                            justifyContent: 'space-around'
+                        }}
+                    >
+                        {cars.slice(0, 3).map((car, index) => (
+                            <CardCar
+                                key={index}
+                                id={car.id}
+                                image={car.image}
+                                title={car.title}
+                                description={car.description}
+                                price={car.price}
+                            />
+                        ))}
+                    </div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            marginTop: '20px',
+                            flexDirection: 'row',
+                            justifyContent: 'space-around'
+                        }}
+                    >
+                        {cars.slice(3, 6).map((car, index) => (
+                            <CardCar
+                                key={index}
+                                id={car.id}
+                                image={car.image}
+                                title={car.title}
+                                description={car.description}
+                                price={car.price}
+                            />
+                        ))}
+                    </div>
                 </div>
                 <div>
-                <AppointmentPage />
+                    <AppointmentPage />
                 </div>
-                <Footer/>
+                <Footer />
             </div>
         </ThemeProvider>
     );
