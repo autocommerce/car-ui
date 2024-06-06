@@ -1,11 +1,16 @@
-import React from 'react';
-import { Edit, SimpleForm, TextInput, EditProps } from 'react-admin';
+import * as React from 'react';
+import { Edit, SimpleForm, SelectInput } from 'react-admin';
 
-const AppointmentEdit: React.FC<EditProps> = (props) => (
+const StatusChoices = [
+    { id: 'confirm', name: 'Confirm' },
+    { id: 'reject', name: 'Reject' },
+    { id: 'archive', name: 'Archive' },
+];
+
+const AppointmentEdit: React.FC = (props: any) => (
     <Edit {...props}>
         <SimpleForm>
-            <TextInput source="date" />
-            <TextInput source="time" />
+            <SelectInput source="status" choices={StatusChoices} />
         </SimpleForm>
     </Edit>
 );

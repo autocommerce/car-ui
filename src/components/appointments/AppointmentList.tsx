@@ -1,12 +1,24 @@
-import React from 'react';
-import { List, Datagrid, TextField, ListProps } from 'react-admin';
+import * as React from 'react';
+import { List, Datagrid, TextField, DateField, SelectField, EditButton, Edit, SimpleForm, SelectInput } from 'react-admin';
 
-const AppointmentList: React.FC<ListProps> = (props) => (
+const StatusChoices = [
+    { id: 'confirm', name: 'Confirm' },
+    { id: 'reject', name: 'Reject' },
+    { id: 'archive', name: 'Archive' },
+];
+
+const AppointmentList: React.FC = (props: any) => (
     <List {...props}>
-        <Datagrid rowClick="edit">
+        <Datagrid>
             <TextField source="id" />
-            <TextField source="date" />
-            <TextField source="time" />
+            <DateField source="createDateTime" />
+            <TextField source="message" />
+            <TextField source="name" />
+            <TextField source="firstName" />
+            <TextField source="email" />
+            <DateField source="appointmentDateTime" />
+            <SelectField source="status" choices={StatusChoices} />
+            <EditButton />
         </Datagrid>
     </List>
 );

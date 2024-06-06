@@ -15,7 +15,6 @@ import ImageList from '@/components/images/ImageList';
 import ImageCreate from '@/components/images/ImageCreate';
 import ImageEdit from '@/components/images/ImageEdit';
 import AppointmentList from '@/components/appointments/AppointmentList';
-import AppointmentCreate from '@/components/appointments/AppointmentCreate';
 import AppointmentEdit from '@/components/appointments/AppointmentEdit';
 
 const AdminApp: React.FC = () => (
@@ -27,7 +26,7 @@ const AdminApp: React.FC = () => (
         <Resource name="users" list={ListGuesser} edit={EditGuesser} icon={UserIcon} />
         <Resource name="cars" list={CarList} create={CarCreate} edit={CarEdit} icon={CarIcon} />
         <Resource name="images" list={ImageList} create={ImageCreate} edit={ImageEdit} icon={ImageIcon} />
-        <Resource name="appointments" list={AppointmentList} create={AppointmentCreate} edit={AppointmentEdit} icon={AppointmentIcon} />
+        <Resource name="appointments" list={AppointmentList} edit={AppointmentEdit} icon={AppointmentIcon} />
     </Admin>
 );
 
