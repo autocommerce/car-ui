@@ -1,10 +1,20 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, DateField, SelectField, EditButton, Edit, SimpleForm, SelectInput } from 'react-admin';
+import {
+    List,
+    Datagrid,
+    TextField,
+    DateField,
+    SelectField,
+    EditButton,
+    Edit,
+    SimpleForm,
+    SelectInput
+} from 'react-admin';
 
 const StatusChoices = [
     { id: 'confirm', name: 'Confirm' },
     { id: 'reject', name: 'Reject' },
-    { id: 'archive', name: 'Archive' },
+    { id: 'archive', name: 'Archive' }
 ];
 
 const AppointmentList: React.FC = (props: any) => (

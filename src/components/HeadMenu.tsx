@@ -82,7 +82,7 @@ export default function HeadMenu() {
                 sx={{
                     backgroundColor: 'rgba(45, 45, 46, 0.842)',
                     color: 'whitesmoke',
-                    borderRadius:'10%'
+                    borderRadius: '10%'
                 }}
             >
                 <Toolbar>

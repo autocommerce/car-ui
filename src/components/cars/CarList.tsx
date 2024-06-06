@@ -1,5 +1,12 @@
 import React from 'react';
-import { List, Datagrid, TextField, NumberField, Filter, TextInput  } from 'react-admin';
+import {
+    List,
+    Datagrid,
+    TextField,
+    NumberField,
+    Filter,
+    TextInput
+} from 'react-admin';
 
 const CarFilter: React.FC = (props: any) => (
     <Filter {...props}>

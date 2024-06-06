@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, Filter ,TextInput} from 'react-admin';
+import { List, Datagrid, TextField, Filter, TextInput } from 'react-admin';
 
 const ImageFilter: React.FC = (props: any) => (
     <Filter {...props}>

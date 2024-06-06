@@ -18,9 +18,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
     palette: {
         primary: {
-            main: 'rgba(126, 126, 129, 0.842)',
-        },
-    },
+            main: 'rgba(126, 126, 129, 0.842)'
+        }
+    }
 });
 
 const CustomSignUpPage: React.FC = () => {
@@ -45,7 +45,7 @@ const CustomSignUpPage: React.FC = () => {
     };
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box

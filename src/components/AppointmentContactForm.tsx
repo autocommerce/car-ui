@@ -7,6 +7,7 @@ import { TextField, Button, Box, Typography, Grid } from '@mui/material';
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import ContactSection from './Contact';
+
 const appointmentSchema = z.object({
     name: z.string().nonempty('Name is required'),
     email: z.string().email('Invalid email address'),
@@ -45,20 +46,17 @@ export default function AppointmentPage() {
                 justifyContent: 'space-between',
                 marginTop: '10px',
                 padding: 2,
-                backgroundImage:
-                    'url("https://www.shutterstock.com/image-photo/beautiful-receptionist-talking-on-phone-260nw-2090759692.jpg")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 position: 'relative'
             }}
         >
             <Typography variant="h4" gutterBottom>
-                Appointment & Contact Us
+                Contact Us & Appointment
             </Typography>
             <Grid container spacing={10}>
                 <Grid item xs={12} md={6}>
-                    <Box
-                    >
+                    <Box>
                         <ContactSection />
                     </Box>
                 </Grid>
@@ -138,10 +136,7 @@ export default function AppointmentPage() {
                                 </LocalizationProvider>
                             )}
                         />
-                        <Button
-                            type="submit"
-                            variant="contained"
-                        >
+                        <Button type="submit" variant="contained">
                             Validate
                         </Button>
                     </Box>

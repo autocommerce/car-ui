@@ -1,5 +1,11 @@
 import React from 'react';
-import { Edit, SimpleForm, TextInput, NumberInput, EditProps } from 'react-admin';
+import {
+    Edit,
+    SimpleForm,
+    TextInput,
+    NumberInput,
+    EditProps
+} from 'react-admin';
 
 const CarEdit: React.FC<EditProps> = (props) => (
     <Edit {...props}>

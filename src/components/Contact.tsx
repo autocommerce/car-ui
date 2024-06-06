@@ -1,13 +1,7 @@
 /** @jsxImportSource react */ // Ensure proper JSX handling
 'use client';
 
-import {
-    TextField,
-    Button,
-    Grid ,
-    Box,
-    Typography
-} from '@mui/material';
+import { TextField, Button, Grid, Box, Typography } from '@mui/material';
 import sendEmail from './EmailSend/sendMail';
 import { z } from 'zod';
 import { useForm, Controller } from 'react-hook-form';
@@ -40,84 +34,81 @@ export default function ContactSection() {
     };
 
     return (
-            <Box
-                component="form"
-                onSubmit={handleSubmit(onSubmit)}
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '100%',
-                    gap: 2,
-                    backgroundColor: 'rgba(250, 250, 250, 0.4)',
-                    padding: 3,
-                    borderRadius: 2,
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
-                }}
-            >
-                <Typography variant="h5">
-                    Contact Us
-                </Typography>
-                <Controller
-                    name="name"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
+        <Box
+            component="form"
+            onSubmit={handleSubmit(onSubmit)}
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                gap: 2,
+                backgroundColor: 'rgba(250, 250, 250, 0.4)',
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
+            }}
+        >
+            <Typography variant="h5">Contact Us</Typography>
+            <Controller
+                name="name"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        required
+                        label="Your Name"
+                        variant="outlined"
+                        fullWidth
+                        error={!!errors.name}
+                        helperText={errors.name?.message as React.ReactNode}
+                    />
+                )}
+            />
+            <Controller
+                name="email"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        required
+                        label="Your Email"
+                        type="email"
+                        variant="outlined"
+                        fullWidth
+                        error={!!errors.email}
+                        helperText={errors.email?.message as React.ReactNode}
+                    />
+                )}
+            />
+            <Controller
+                name="message"
+                control={control}
+                defaultValue=""
+                render={({ field, fieldState: { error } }) => (
+                    <>
                         <TextField
                             {...field}
-                            required
-                            label="Your Name"
+                            label="Message"
                             variant="outlined"
-                            fullWidth
-                            error={!!errors.name}
-                            helperText={errors.name?.message as React.ReactNode}
+                            multiline
+                            rows={1}
+                            style={{
+                                borderColor: error ? 'red' : '#ced4da'
+                            }}
                         />
-                    )}
-                />
-                <Controller
-                    name="email"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                        <TextField
-                            {...field}
-                            required
-                            label="Your Email"
-                            type="email"
-                            variant="outlined"
-                            fullWidth
-                            error={!!errors.email}
-                            helperText={errors.email?.message as React.ReactNode}
-                        />
-                    )}
-                />
-                <Controller
-                    name="message"
-                    control={control}
-                    defaultValue=""
-                    render={({ field, fieldState: { error } }) => (
-                        <>
-                            <TextField
-                                        {...field}
-                                        label="Message"
-                                        variant="outlined"
-                                        multiline
-                                        rows={1}
-                                        style={{
-                                            borderColor: error ? 'red' : '#ced4da'
-                                        }}
-                                    />
-                            {error && (
-                                <Typography color="error" variant="caption">
-                                    {error.message}
-                                </Typography>
-                            )}
-                        </>
-                    )}
-                />
-                <Button type="submit" variant="contained" >
-                    Submit
-                </Button>
-            </Box>
-
+                        {error && (
+                            <Typography color="error" variant="caption">
+                                {error.message}
+                            </Typography>
+                        )}
+                    </>
+                )}
+            />
+            <Button type="submit" variant="contained">
+                Submit
+            </Button>
+        </Box>
     );
 }

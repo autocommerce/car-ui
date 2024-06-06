@@ -4,7 +4,7 @@ import { Edit, SimpleForm, SelectInput } from 'react-admin';
 const StatusChoices = [
     { id: 'confirm', name: 'Confirm' },
     { id: 'reject', name: 'Reject' },
-    { id: 'archive', name: 'Archive' },
+    { id: 'archive', name: 'Archive' }
 ];
 
 const AppointmentEdit: React.FC = (props: any) => (

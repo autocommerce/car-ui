@@ -23,10 +23,32 @@ const AdminApp: React.FC = () => (
         authProvider={authProvider}
         loginPage={CustomLoginPage}
     >
-        <Resource name="users" list={ListGuesser} edit={EditGuesser} icon={UserIcon} />
-        <Resource name="cars" list={CarList} create={CarCreate} edit={CarEdit} icon={CarIcon} />
-        <Resource name="images" list={ImageList} create={ImageCreate} edit={ImageEdit} icon={ImageIcon} />
-        <Resource name="appointments" list={AppointmentList} edit={AppointmentEdit} icon={AppointmentIcon} />
+        <Resource
+            name="users"
+            list={ListGuesser}
+            edit={EditGuesser}
+            icon={UserIcon}
+        />
+        <Resource
+            name="cars"
+            list={CarList}
+            create={CarCreate}
+            edit={CarEdit}
+            icon={CarIcon}
+        />
+        <Resource
+            name="images"
+            list={ImageList}
+            create={ImageCreate}
+            edit={ImageEdit}
+            icon={ImageIcon}
+        />
+        <Resource
+            name="appointments"
+            list={AppointmentList}
+            edit={AppointmentEdit}
+            icon={AppointmentIcon}
+        />
     </Admin>
 );
 

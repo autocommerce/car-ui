@@ -1,5 +1,11 @@
 import React from 'react';
-import { Create, SimpleForm, TextInput, NumberInput, CreateProps } from 'react-admin';
+import {
+    Create,
+    SimpleForm,
+    TextInput,
+    NumberInput,
+    CreateProps
+} from 'react-admin';
 
 const CarCreate: React.FC<CreateProps> = (props) => (
     <Create {...props}>

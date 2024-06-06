@@ -1,5 +1,13 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@mui/material';
+import {
+    Card,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Button,
+    Typography,
+    Box
+} from '@mui/material';
 import Link from 'next/link';
 
 type CardCarProps = {
@@ -11,7 +19,14 @@ type CardCarProps = {
     price: string;
 };
 
-const CardCar: React.FC<CardCarProps> = ({ id, image, brand, model, description, price }) => {
+const CardCar: React.FC<CardCarProps> = ({
+    id,
+    image,
+    brand,
+    model,
+    description,
+    price
+}) => {
     return (
         <Box sx={{ textDecoration: 'none' }}>
             <Card
@@ -22,7 +37,7 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, brand, model, description,
                     transition: 'box-shadow 0.3s ease-in-out',
                     cursor: 'pointer',
                     '&:hover': {
-                        boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.2)',
+                        boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.2)'
                     },
                     textDecoration: 'none'
                 }}
@@ -42,10 +57,19 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, brand, model, description,
                     />
                 </Link>
                 <CardContent sx={{ textDecoration: 'none' }}>
-                    <Typography gutterBottom variant="h5" component="div" sx={{ textDecoration: 'none' }}>
+                    <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        sx={{ textDecoration: 'none' }}
+                    >
                         {`${brand} ${model}`}
                     </Typography>
-                    <Typography variant="body2" color="text.primary" sx={{ textDecoration: 'none' }}>
+                    <Typography
+                        variant="body2"
+                        color="text.primary"
+                        sx={{ textDecoration: 'none' }}
+                    >
                         {description.substring(0, 60) + '...'}
                     </Typography>
                     <Typography variant="h5" sx={{ textDecoration: 'none' }}>
@@ -53,10 +77,19 @@ const CardCar: React.FC<CardCarProps> = ({ id, image, brand, model, description,
                     </Typography>
                 </CardContent>
                 <CardActions sx={{ ml: '5%', textDecoration: 'none' }}>
-                    <Button size="small" variant="contained" sx={{ textDecoration: 'none' }}>
+                    <Button
+                        size="small"
+                        variant="contained"
+                        sx={{ textDecoration: 'none' }}
+                    >
                         Buy
                     </Button>
-                    <Button size="small" variant="contained" color="warning" sx={{ textDecoration: 'none' }}>
+                    <Button
+                        size="small"
+                        variant="contained"
+                        color="warning"
+                        sx={{ textDecoration: 'none' }}
+                    >
                         More info
                     </Button>
                 </CardActions>

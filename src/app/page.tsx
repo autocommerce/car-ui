@@ -26,9 +26,9 @@ type Image = {
 const theme = createTheme({
     palette: {
         primary: {
-            main: 'rgba(126, 126, 129, 0.842)',
-        },
-    },
+            main: 'rgba(126, 126, 129, 0.842)'
+        }
+    }
 });
 
 const HomePage: React.FC = () => {
@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
     }, []);
 
     const getImageUrl = (imageId: string) => {
-        const image = images.find(img => img.id === imageId);
+        const image = images.find((img) => img.id === imageId);
         return image ? image.Url : '';
     };
 

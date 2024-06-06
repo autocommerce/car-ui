@@ -36,7 +36,9 @@ const DescriptionPage: React.FC = () => {
                 return;
             }
             try {
-                const response = await fetch(`http://localhost:4000/cars/${id}`);
+                const response = await fetch(
+                    `http://localhost:4000/cars/${id}`
+                );
                 if (!response.ok) throw new Error('Failed to fetch car data');
                 const data: Car = await response.json();
                 setCarDetails(data);
@@ -64,7 +66,7 @@ const DescriptionPage: React.FC = () => {
     }, [id]);
 
     const getImageUrl = (imageId: string) => {
-        const image = images.find(img => img.id === imageId);
+        const image = images.find((img) => img.id === imageId);
         return image ? image.Url : '';
     };
 
@@ -87,7 +89,7 @@ const DescriptionPage: React.FC = () => {
                 <Typography variant="h3" component="h1" gutterBottom>
                     Car Description
                 </Typography>
-                <CardCar 
+                <CardCar
                     id={carDetails.id}
                     image={getImageUrl(carDetails.imageId)}
                     brand={carDetails.brand}
@@ -100,7 +102,12 @@ const DescriptionPage: React.FC = () => {
                         About this Car
                     </Typography>
                     <Typography variant="body1">
-                        Here you can add more detailed information about the car. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo et nisi pretium, non ultrices nulla efficitur. Cras ac eros quis justo condimentum dapibus. Integer ut purus sit amet velit tempor fermentum.
+                        Here you can add more detailed information about the
+                        car. Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Nullam scelerisque leo et nisi pretium, non
+                        ultrices nulla efficitur. Cras ac eros quis justo
+                        condimentum dapibus. Integer ut purus sit amet velit
+                        tempor fermentum.
                     </Typography>
                 </Box>
                 <Box sx={{ mt: 4 }}>
