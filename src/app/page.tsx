@@ -20,7 +20,7 @@ type Car = {
 
 type Image = {
     id: string;
-    Url: string;
+    url: string;
 };
 
 const theme = createTheme({
@@ -40,8 +40,8 @@ const HomePage: React.FC = () => {
         const fetchData = async () => {
             try {
                 const [carsResponse, imagesResponse] = await Promise.all([
-                    fetch('http://localhost:4000/cars'),
-                    fetch('http://localhost:4000/images')
+                    fetch('http://localhost:8080/cars'),
+                    fetch('http://localhost:8080/images')
                 ]);
 
                 const carsData: Car[] = await carsResponse.json();
@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
 
     const getImageUrl = (imageId: string) => {
         const image = images.find((img) => img.id === imageId);
-        return image ? image.Url : '';
+        return image ? `http://localhost:8080/images/${image.url}` : '';
     };
 
     if (showSplash) {

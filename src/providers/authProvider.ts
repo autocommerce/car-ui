@@ -10,8 +10,8 @@ import { firebaseApp } from '../config/firebase';
 
 const firebaseAuth = getAuth(firebaseApp);
 
-const BEARER_LOCALSTORAGE_NAME = 'token';
-const cacheToken = async (credential: UserCredential) => {
+const BEARER_LOCALSTORAGE_NAME: string = 'token'; // Ajout de l'annotation de type
+const cacheToken = async (credential: UserCredential): Promise<UserCredential> => { // Ajout de l'annotation de type
     localStorage.setItem(
         BEARER_LOCALSTORAGE_NAME,
         await credential.user.getIdToken()
@@ -19,7 +19,7 @@ const cacheToken = async (credential: UserCredential) => {
     return credential;
 };
 
-export const getCachedToken = () => {
+export const getCachedToken = (): string | null => { // Ajout de l'annotation de type
     return localStorage.getItem(BEARER_LOCALSTORAGE_NAME);
 };
 
@@ -35,14 +35,14 @@ interface SignupParams {
 }
 
 const authProvider: AuthProvider = {
-    signup: async ({ username, email, password }: SignupParams) => {
+    signup: async ({ username, email, password }: SignupParams): Promise<void> => { // Ajout de l'annotation de type
         try {
             const userCredential = await createUserWithEmailAndPassword(
                 firebaseAuth,
                 email,
                 password
             );
-            cacheToken(userCredential);
+            await cacheToken(userCredential); // Ajout de l'attente pour s'assurer que le token est enregistré
             const user = userCredential.user;
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('username', username);
@@ -53,14 +53,14 @@ const authProvider: AuthProvider = {
         }
     },
 
-    login: async ({ email, password }: LoginParams) => {
+    login: async ({ email, password }: LoginParams): Promise<void> => { 
         try {
             const userCredential = await signInWithEmailAndPassword(
                 firebaseAuth,
                 email,
                 password
             );
-            cacheToken(userCredential);
+            await cacheToken(userCredential); 
             const user = userCredential.user;
             localStorage.setItem('user', JSON.stringify(user));
             return Promise.resolve();
@@ -70,7 +70,7 @@ const authProvider: AuthProvider = {
         }
     },
 
-    logout: async () => {
+    logout: async (): Promise<void> => { 
         try {
             localStorage.removeItem('user');
             localStorage.removeItem('username');
@@ -82,12 +82,12 @@ const authProvider: AuthProvider = {
         }
     },
 
-    checkAuth: () => {
+    checkAuth: (): Promise<void> => { 
         const user = localStorage.getItem('user');
         return user ? Promise.resolve() : Promise.reject();
     },
 
-    checkError: (error: { status: number }) => {
+    checkError: (error: { status: number }): Promise<void> => { 
         const status = error.status;
         if (status === 401 || status === 403) {
             localStorage.removeItem('user');
@@ -97,7 +97,7 @@ const authProvider: AuthProvider = {
         return Promise.resolve();
     },
 
-    getPermissions: () => {
+    getPermissions: (): Promise<void> => { // Ajout de l'annotation de type
         return Promise.resolve();
     }
 };

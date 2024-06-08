@@ -38,7 +38,7 @@ const DescriptionPage: React.FC = () => {
             }
             try {
                 const response = await fetch(
-                    `http://localhost:4000/cars/${id}`
+                    `http://localhost:8080/cars/${id}`
                 );
                 if (!response.ok) throw new Error('Failed to fetch car data');
                 const data: Car = await response.json();
@@ -51,7 +51,7 @@ const DescriptionPage: React.FC = () => {
 
         const fetchImagesData = async () => {
             try {
-                const response = await fetch('http://localhost:4000/images');
+                const response = await fetch('http://localhost:8080/images');
                 if (!response.ok) throw new Error('Failed to fetch images');
                 const data: Image[] = await response.json();
                 setImages(data);
