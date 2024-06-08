@@ -1,11 +1,20 @@
-'use client';
 import React, { useState } from 'react';
 import { Box, TextField, MenuItem, Slider, Typography } from '@mui/material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SearchButton from './SearchButton';
 
-const carTypes = ['SUV', 'Sedan', 'Convertible'];
-const motorTypes = ['Electric', 'Hybrid', 'Gasoline'];
+
+interface Car {
+    id: string;
+    imageId: string;
+    brand: string;
+    model: string;
+    description: string;
+    price: string;
+    type: string;
+    motorType: string;
+}
+
 const priceRange = { min: 500, max: 100000 };
 
 const carThumbStyles = {
@@ -18,22 +27,33 @@ const carThumbStyles = {
     border: 'none'
 };
 
-export default function FilterSection() {
+const FilterSection: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCarType, setSelectedCarType] = useState('');
     const [selectedMotorType, setSelectedMotorType] = useState('');
     const [selectedPrice, setSelectedPrice] = useState(priceRange.min);
+    const [cars, setCars] = useState<Car[]>([]);
+    const [carTypes, setCarTypes] = useState<string[]>([]);
+    const [motorTypes, setMotorTypes] = useState<string[]>([]);
 
     const handleSliderChange = (event: Event, newValue: number | number[]) => {
         setSelectedPrice(newValue as number);
     };
-    const handleSearch = () => {
-        console.log('Search:', {
-            searchTerm,
-            selectedCarType,
-            selectedMotorType,
-            selectedPrice
-        });
+
+    const handleSearch = async () => {
+        const response = await fetch(`http://localhost:8080/api/cars?searchTerm=${searchTerm}&carType=${selectedCarType}&motorType=${selectedMotorType}&maxPrice=${selectedPrice}`);
+        const result = await response.json();
+        setCars(result);
+        
+        const types = Array.from(new Set<string>(result.map((car: Car) => car.type)));
+        setCarTypes(types);
+
+        const motors = Array.from(new Set<string>(result.map((car: Car) => car.motorType)));
+        setMotorTypes(motors);
+    };
+
+    const handleTextFieldClick = () => {
+        handleSearch();
     };
 
     return (
@@ -43,7 +63,6 @@ export default function FilterSection() {
                 flexDirection: 'column',
                 width: '20%',
                 p: 2,
-
                 background: 'white',
                 border: '2px dashed grey',
                 borderRadius: '5px'
@@ -54,6 +73,7 @@ export default function FilterSection() {
                 variant="outlined"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onClick={handleTextFieldClick}
                 sx={{ mb: 2 }}
             />
             <TextField
@@ -112,3 +132,5 @@ export default function FilterSection() {
         </Box>
     );
 }
+
+export default FilterSection;
