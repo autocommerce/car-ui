@@ -75,7 +75,12 @@ export default function AppointmentPage() {
                             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.9)'
                         }}
                     >
-                        <Typography variant="h5">Appointment Form</Typography>
+                        <Typography variant="h4" sx={
+                            {
+                                textAlign: 'center',
+                                
+                            }
+                        }>Appointment Form</Typography>
                         <Controller
                             name="name"
                             control={controlAppointment}
