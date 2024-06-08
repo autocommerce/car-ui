@@ -6,10 +6,18 @@ import {
     DateField,
     SelectField,
     EditButton,
+    Filter,
+    TextInput,
     Edit,
     SimpleForm,
     SelectInput
 } from 'react-admin';
+
+const AppointmentFilter: React.FC = (props: any) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+    </Filter>
+);
 
 const StatusChoices = [
     { id: 'confirm', name: 'Confirm' },
@@ -18,7 +26,7 @@ const StatusChoices = [
 ];
 
 const AppointmentList: React.FC = (props: any) => (
-    <List {...props}>
+    <List filters={<AppointmentFilter />} {...props}>
         <Datagrid>
             <TextField source="id" />
             <DateField source="createDateTime" />

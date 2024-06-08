@@ -19,7 +19,7 @@ export const carProvider: CustomDataprovider<Car> = {
     update:(payload)=>{
         return post<Car>('cars', payload).then(response => response.data);
     },
-    delete: ()=>{
-        throw new Error("Not implemented");
+    delete: (id)=>{
+        return get<Car>(`cars/${id}`).then(response => response.data);
     }
 }

@@ -17,6 +17,7 @@ import ImageCreate from '@/components/images/ImageCreate';
 import ImageEdit from '@/components/images/ImageEdit';
 import AppointmentList from '@/components/appointments/AppointmentList';
 import AppointmentEdit from '@/components/appointments/AppointmentEdit';
+import AppointmentCreate from './appointments/AppointmentCreate';
 
 const lightTheme = createTheme(defaultTheme);
 const darkTheme = createTheme({ 
@@ -69,6 +70,7 @@ const AdminApp: React.FC = () => {
                     name="appointments"
                     list={AppointmentList}
                     edit={AppointmentEdit}
+                    create={AppointmentCreate}
                     icon={AppointmentIcon}
                 />
             </Admin>

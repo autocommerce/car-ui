@@ -19,7 +19,7 @@ export const appointmentProvider: CustomDataprovider<appointment> = {
     update:(payload)=>{
         return post<appointment>('appointments', payload).then(response => response.data);
     },
-    delete: ()=>{
-        throw new Error("Not implemented");
+    delete: (id)=>{
+        return get<appointment>(`appointments/${id}`).then(response => response.data);
     }
 }

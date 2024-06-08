@@ -19,7 +19,7 @@ export const imageProvider: CustomDataprovider<Image> = {
     update:(payload)=>{
         return post<Image>('images', payload).then(response => response.data);
     },
-    delete: ()=>{
-        throw new Error("Not implemented");
+    delete: (id)=>{
+        return get<Image>(`cars/${id}`).then(response => response.data);
     }
 }

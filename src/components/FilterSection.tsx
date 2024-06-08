@@ -41,7 +41,7 @@ const FilterSection: React.FC = () => {
     };
 
     const handleSearch = async () => {
-        const response = await fetch(`http://localhost:8080/api/cars?searchTerm=${searchTerm}&carType=${selectedCarType}&motorType=${selectedMotorType}&maxPrice=${selectedPrice}`);
+        const response = await fetch(`localhost:8080/api/cars?searchTerm=${searchTerm}&carType=${selectedCarType}&motorType=${selectedMotorType}&maxPrice=${selectedPrice}`);
         const result = await response.json();
         setCars(result);
         
